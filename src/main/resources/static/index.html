@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/nprogress.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<style>
+    .Name {
+        width: 10px;
+    }
+</style>
+<body style="height: 100%; margin: 0">
+<div class="big-wrap">
+    <div id="content-wrap" class="content-wrap">
+        <header id="header" class="trans-all-2">
+            <button id="drawer-toggle" type="button" class="btn btn-default btn-lg ">
+                <i class="fa fa-list " aria-hidden="true"></i>
+            </button>
+            <div class="login-panel" style="margin-left: auto;">
+                <div class="dropdown pull-right">
+                    <button type="button" class="btn dropdown-toggle" id="dropdown-user"
+                            data-toggle="dropdown" style="outline: none; box-shadow: none;font-size: 15px">
+                        用户：张无忌
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-user">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="#">退出</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="#">修改密码</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div id="container" class="main-content container">
+            <div class="container top-toolbar" style="margin-top: 10px;">
+                <div class="row">
+                    <div class="span6">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#">Data Visualization</a></li>
+                            <li><a href="http://handcong.cc:800/realTime">Real-time Data</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="echart-container"
+                 style="height: 500px; display: inline-block;width: 700px; padding-left: 80px; padding-top: 20px; margin: 0 auto;"></div>
+            <div style="display: inline-block; width: 360px;">
+                <div style="width: 300px; margin: 10px auto;">
+                    <span class="Name">统计时间</span>
+                    <select class="form-control" style=";width: 80px; display: inline;">
+                        <option>2019-01-20</option>
+                        <option>2019-11-20</option>
+                        <option>2019-12-20</option>
+                        <option>2019-02-20</option>
+                        <option>2019-03-20</option>
+                    </select>
+                    <span class="Name">系统版本</span>
+                    <select class="form-control" style="width: 80px; display: inline;">
+                        <option>1.0.2</option>
+                        <option>1.1.2</option>
+                        <option>1.1.3</option>
+                        <option>1.1.4</option>
+                        <option>1.5.0</option>
+                    </select>
+                </div>
+                <div style="width: 300px; margin: 10px auto;">
+                    <span class="Name">省份&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                    <select id="province" class="form-control" style="width: 80px; display: inline;">
+                        <option>广东</option>
+                        <option>广西</option>
+                        <option>河南</option>
+                        <option>河北</option>
+                        <option>江西</option>
+                    </select>
+                    <span class="Name">机型&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                    <select class="form-control" style="width: 80px; display: inline;">
+                        <option>TCL-CN-MS8677-X2</option>
+                        <option>TCL-CN-MS7724-X2</option>
+                        <option>TCL-CN-MS6772-X2</option>
+                        <option>TCL-CN-T1962-X2</option>
+                    </select>
+                </div>
+                <div style="width: 300px; margin: 10px auto;">
+                    <span class="Name">剩余内存</span>
+                    <select class="form-control" style="width: 80px; display: inline;">
+                        <option>1G</option>
+                        <option>2G</option>
+                        <option>3G</option>
+                        <option>4G</option>
+                        <option>5G</option>
+                    </select>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <button id="fat-btn" class="btn btn-primary" data-loading-text="Loading..."
+                            type="button" style="margin-left: 10px;"> 搜素
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <footer id="footer">
+            <div>TCL终端管理系统</div>
+            <div>created by <a href="https://github.com/cooden" target="_blank">WANG Cong</a></div>
+        </footer>
+    </div>
+    <aside id="drawer" class="trans-all-2">
+        <div class="drawer-head">
+            <a href="index.html" class="logo-text">TCL</a>
+        </div>
+
+        <ul class="menu-parent menu-root">
+            <li class="menu-child" style="background: #08415C">
+                <a href="index.html"
+                   class="menu-link"><i class="menu-icon fa fa-home"></i><span class="menu-desc">首页</span></a>
+            </li>
+
+            <li class="menu-child ">
+                <a href="two.html"
+                   class="menu-link"><i class="menu-icon fa fa-bar-chart"></i><span class="menu-desc">监控台</span></a>
+            </li>
+
+            <li class="menu-child">
+                <a class="menu-link">
+                    <i class="menu-icon fa fa-flask"></i>
+                    <span class="menu-desc">实验室</span>
+                    <span class="menu-more"><i class="fa fa-chevron-right"></i></span>
+                </a>
+                <ul class="menu-parent">
+                    <li class="menu-child"><a href="there.html" class="menu-link">库存</a></li>
+                    <li class="menu-child"><a href="there.html" class="menu-link">清单</a></li>
+                    <li class="menu-child"><a href="there.html" class="menu-link">人员</a></li>
+                </ul>
+            </li>
+
+            <li class="menu-child">
+                <a class="menu-link">
+                    <i class="menu-icon fa fa-trash-o"></i>
+                    <span class="menu-desc">数据分析</span>
+                    <span class="menu-more"><i class="fa fa-chevron-right"></i></span>
+                </a>
+                <ul class="menu-parent">
+                    <li class="menu-child"><a href="there.html" class="menu-link">运营数据</a></li>
+                    <li class="menu-child"><a href="there.html" class="menu-link">反馈数据</a></li>
+                </ul>
+            </li>
+
+            <li class="menu-child">
+                <a class="menu-link" href="there.html">
+                    <i class="menu-icon fa fa-truck"></i><span class="menu-desc">出进货</span>
+                </a>
+            </li>
+
+            <li class="menu-child">
+                <a class="menu-link" href="there.html">
+                    <i class="menu-icon fa fa-cog"></i><span class="menu-desc">配置</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+</div>
+<script src="https://cdn.bootcss.com/echarts/4.3.0-rc.2/echarts.min.js"></script>
+<script src="js/china.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/core.js"></script>
+<script type="application/javascript" src="js/jquery.min.js"></script>
+<script type="application/javascript" src="js/jquery.pjax.js"></script>
+<script type="application/javascript" src="js/bootstrap.js"></script>
+<script type="application/javascript" src="js/nprogress.js"></script>
+<script type="application/javascript" src="js/admin.js"></script>
+<script type="text/javascript">
+
+    // $(document).ready(function(){
+    //     $("#b01").click(function(){
+    //         htmlobj=$.ajax({url:"/jquery/test1.txt",async:false});
+    //         $("#myDiv").html(htmlobj.responseText);
+    //     });
+    // });
+    document.getElementById("fat-btn").onclick = function () {
+        var province = document.getElementById("province").value;
+        setTimeout(function () {
+            var resultData = [randomData()+300, randomData()+1000, randomData()+1900, randomData(), randomData()]
+            var data = [
+                {name: province, itemStyle: {normal: {areaColor: 'red'}}}
+            ]
+            //var res
+            //ajax
+            var option = myChart.getOption();
+            option.series[0].data = data;
+            option.series[1].data = resultData;
+            myChart.setOption(option);
+        }, randomData()+100);
+        console.log(province);
+    };
+    var myChart = echarts.init(document.getElementById("echart-container"));
+
+    function randomData() {
+        return Math.round(Math.random() * 200);
+    }
+
+    var data = [{
+        name: '云南', value1: randomData(), value2: randomData(),
+    }, {
+        name: '辽宁', value1: randomData(), value2: randomData(),
+    }, {
+        name: '黑龙江', value1: randomData(), value2: randomData(),
+    }, {
+        name: '湖南', value1: randomData(), value2: randomData(),
+    }, {
+        name: '福建', value1: randomData(), value2: randomData(),
+    }, {
+        name: '贵州', value1: randomData(), value2: randomData(),
+    }, {
+        name: '广东', value1: randomData(), value2: randomData(),
+    }, {
+        name: '青海', value1: randomData(), value2: randomData(),
+    }, {
+        name: '西藏', value1: randomData(), value2: randomData(),
+    }, {
+        name: '四川', value1: randomData(), value2: randomData(),
+    }
+    ];
+
+    var resultdata = [774.3, 1343.2, 2243.2, 300, 32];
+    var sum0 = 0;
+    for (var i = 0; i < data.length; i++) {
+        var d0 = {
+            name: data[i].name,
+            value: data[i].value1 + data[i].value2
+        };
+        sum0 += data[i].value1 + data[i].value2;
+    }
+
+    function NumDescSort(a, b) {
+        return a.value - b.value;
+    }
+
+    resultdata.sort(NumDescSort);
+    var option = {
+        title: [{                   //标题
+            text: 'Top 2 Active TV device',
+            left: '25%',
+            top: 40
+        }, {                         //右上角全部
+            text: 'All Active: ' + sum0,
+            right: '10%',
+            top: 40,
+            width: 100,
+            textStyle: {
+                color: '#555',
+                fontSize: 16
+            }
+        }],
+        tooltip: {
+            trigger: 'item'
+        },
+        visualMap: {             　　//左下角拉条
+            min: 0,
+            max: 2000,
+            left: 'left',
+            top: '50',
+            text: ['高', '低'],
+            calculable: true,
+            colorLightness: [0.2, 100],
+            color: ['#c05050', '#e5cf0d', '#5ab1ef'],
+            dimension: 0
+        },
+        toolbox: {                  //右边工具栏
+            show: true,
+            orient: 'vertical',
+            left: 'right',
+            top: 'center',
+            feature: {
+                dataView: {
+                    readOnly: false
+                },
+                restore: {},
+                saveAsImage: {}
+            }
+        },
+        grid: {                 //bar
+            left: '25%',
+            top: 100,
+            bottom: 40,
+            width: '30%',
+            height: '20%'
+        },
+        xAxis: [{
+            position: 'top',
+            type: 'value',
+            boundaryGap: false,
+            splitLine: {show: false},
+            axisLabel: {rotate: 45}
+        }],
+        yAxis: [{
+            type: 'category',
+            data: ['内存空间', '月活量', '累计激活量', 'TCL-CN-MS8677-X2', 'TCL-CN-T1962-C7'],
+            axisTick: {alignWithLabel: true}
+        }],
+        series: [{              //地图
+            z: 1,
+            name: '全部',
+            type: 'map',
+            map: 'china',
+            left: '50%',
+            top: '100',
+            width: '50%',
+            zoom: 1,
+            label: {
+                //normal: {show: true},
+                emphasis: {show: true}
+            },
+            //roam: true,
+            data: resultdata
+        }, {                //bar
+            name: '全部',
+            z: 2,
+            type: 'bar',
+            // barWidth: '10%',
+            label: {
+                normal: {show: true},
+                emphasis: {show: true,}
+            },
+            itemStyle: {
+                emphasis: {
+                    color: "rgb(254,153,78)"
+                }
+            },
+            data: resultdata
+        }]
+    };
+    myChart.setOption(option, true);
+
+    function getCookie(c_name) {
+        if (document.cookie.length > 0) {
+            c_start = document.cookie.indexOf(c_name + "=")
+            if (c_start != -1) {
+                c_start = c_start + c_name.length + 1
+                c_end = document.cookie.indexOf(";", c_start)
+                if (c_end == -1) c_end = document.cookie.length
+                return unescape(document.cookie.substring(c_start, c_end))
+            }
+        }
+        return ""
+    }
+
+    function setCookie(c_name, value, expiredays) {
+        var exdate = new Date()
+        exdate.setDate(exdate.getDate() + expiredays)
+        document.cookie = c_name + "=" + escape(value) +
+            ((expiredays == null) ? "" : "; expires=" + exdate.toGMTString())
+    }
+
+
+    function hasClass(element, Hclass) {
+        var patt = new RegExp(Hclass)
+        return patt.test(element.className)
+    }
+
+    function addClass(element, Hclass) {
+        if (!hasClass(element, Hclass)) {
+            element.className += ' ' + Hclass;
+        }
+    }
+
+    function removeClass(element, Hclass) {
+        if (hasClass(element, Hclass)) {
+            var re = element.className
+            re = re.replace(Hclass, '');
+            element.className = re
+        }
+    }
+
+    //保证关闭了侧拉栏之后，刷新浏览器测拉栏不会跑出来，为了减少卡顿，使用原生
+    if (getCookie('drawerIsClosed')) {
+        addClass(document.getElementById('drawer'), 'drawer-closed')
+        addClass(document.getElementById('content-wrap'), 'content-wrap-full')
+    }
+
+</script>
+</body>
+
+</html>
