@@ -19,5 +19,10 @@ java.lang.IllegalArgumentException: requirement failed: Corrupt index found, ind
 
 StreamingExamples.scala
 
+发布到yarn集群后
+杀死命令
+yarn application -kill application_id
+
+
 #Maven打包SpringBoot
 mvn package，我通过IntelliIj直接打包；打包前可以mvn clean下；
