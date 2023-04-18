@@ -8,6 +8,7 @@
 
 ## 启动Kafka
 使用nohup命令启动
+
 项目路径：
   cd /usr/local/
   
