@@ -1,7 +1,5 @@
 
-Kafka引入
-
-
+## Kafka引入
 
 配置application.properties
 这里要在application里配置Kafka的ip，端口等； 
