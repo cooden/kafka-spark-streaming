@@ -8,8 +8,11 @@ Kafka引入
 
 直接在SpringbootApplication下启动KafkaListener
 
-启动Kafka
-cd /usr/local/kafka
+## 启动Kafka
+使用nohup命令启动
+项目路径：
+  cd /usr/local/
+  
 nohup bin/zookeeper-server-start.sh config/zookeeper.properties
 nohup bin/kafka-server-start.sh config/server.properties
 
